@@ -4,42 +4,45 @@
 #include "blackjack.h"
 #include "players.h"
 #include <vector>
+#include <string>
+using std::string;
+
 
 int main() {
     
     std::cout << "Welcome to Blackjack!" << std::endl;
 
-    Card ace_of_spade = Card();
-    std::cout << string(ace_of_spade) << std::endl;
+    // Card ace_of_spade = Card();
+    // std::cout << string(ace_of_spade) << std::endl;
     
-    Card king_of_hearts = Card("Heart", "King", 10);
-    std::cout << string(king_of_hearts) << std::endl;
+    // Card king_of_hearts = Card("Heart", "King", 10);
+    // std::cout << string(king_of_hearts) << std::endl;
     
-    Deck deck1 = Deck();
+    // Deck deck1 = Deck();
 
-    // Test Code
-    std::cout << "Randomly drawing the whole deck" << std::endl << std::endl;
-    for (int i = 0; i < 52; i++) {
-        std::cout << string(deck1.dealCard()) << std::endl;
-    }
+    // // Test Code
+    // std::cout << "Randomly drawing the whole deck" << std::endl << std::endl;
+    // for (int i = 0; i < 52; i++) {
+    //     std::cout << string(deck1.dealCard()) << std::endl;
+    // }
 
-    deck1.shuffle();
-    std::cout << "Randomly drawing the whole deck" << std::endl << std::endl;
-    for (int i = 0; i < 52; i++) {
-        std::cout << string(deck1.dealCard()) << std::endl;
-    }
+    // deck1.shuffle();
+    // std::cout << "Randomly drawing the whole deck" << std::endl << std::endl;
+    // for (int i = 0; i < 52; i++) {
+    //     std::cout << string(deck1.dealCard()) << std::endl;
+    // }
 
-    Dealer dealer = Dealer();
-    std::cout << string(dealer) << std::endl;
+    // Dealer dealer = Dealer();
+    // std::cout << string(dealer) << std::endl;
 
 
-    std::vector<int> myvector;
-    for (int i=1; i<=5; i++) myvector.push_back(i);
+    // std::vector<int> myvector;
+    // for (int i=1; i<=5; i++) myvector.push_back(i);
 
-    std::cout << "myvector contains:";
-    for (std::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
-        std::cout << ' ' << *it;
-    std::cout << '\n';
+    // std::cout << "myvector contains:";
+    // for (std::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
+    //     std::cout << ' ' << *it;
+    // std::cout << '\n';
 
     std::vector<Card> myCardVec;
     myCardVec.push_back(Card("Clubs", "King", 10));
@@ -58,9 +61,18 @@ int main() {
     player1.updateHand(Card("Hearts", "4", 4));
     std::cout << string(player1) << std::endl;
 
+
+    std::cout << "about to create object" << std::endl;
     Blackjack bjGame = Blackjack();
     std::array<int,3> sb = bjGame.getScore();
     std::cout << std::to_string(sb[0]) << " " << std::to_string(sb[1]) << + " " << std::to_string(sb[2]) << std::endl;
+
+    // bjGame.player1.updateHand(bjGame.gameDealer.dealCard());
+    // std::cout << string(bjGame.player1) << std::endl;
+
+    bjGame.playGame();
+
+    std::cout << bjGame.player1.getChips() << std::endl;
 
     return 0;
 }

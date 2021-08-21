@@ -35,7 +35,7 @@ int Card::getVal() {
 }
 
 Card::operator string() const {
-    return face + " of " + suit + ". Value " + std::to_string(val);
+    return face + " of " + suit + ".";
 }
 
 //------------------------------------------------------------------------------------------

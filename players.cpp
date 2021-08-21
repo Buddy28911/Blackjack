@@ -9,13 +9,17 @@ using std::string;
 // Dealer Class
 Dealer::Dealer() {
     game_deck = Deck();
-    dealerHand.push_back(Card());
-    dealerHand.push_back(game_deck.dealCard());
+    // dealerHand.push_back(Card());
+    // dealerHand.push_back(game_deck.dealCard());
     return;
 }
 
 Dealer::operator string() const {
     return "Dealer's top card " + string(dealerHand.front());
+}
+
+Card Dealer::dealCard() {
+    return game_deck.dealCard();
 }
 
 void Dealer::updateHand(Card new_card){
@@ -29,8 +33,8 @@ void Dealer::updateHand(Card new_card){
 
 Player::Player() {
     chips = 100; // Player starts with $100 in chips
-    playerHand.push_back(Card());
-    playerHand.push_back(Card("Hearts", "Jack", 10));
+    // playerHand.push_back(Card());
+    // playerHand.push_back(Card("Hearts", "Jack", 10));
 }
 
 Player::operator string() const{

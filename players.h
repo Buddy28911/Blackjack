@@ -12,9 +12,10 @@ using std::string;
 class Dealer {
     private:
         Deck game_deck;
-        std::vector<Card> dealerHand;
     public:
+        std::vector<Card> dealerHand;
         Dealer();
+        Card dealCard();
         void updateHand(Card new_card);
         operator string() const;
 };
@@ -24,9 +25,9 @@ class Dealer {
 // Player Class
 class Player {
     private:
-        int chips;
-        std::vector<Card> playerHand;
+        int chips;    
     public:
+        std::vector<Card> playerHand;
         Player();
         int getChips();
         void updateChips(int difference);

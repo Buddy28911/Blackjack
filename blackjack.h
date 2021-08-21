@@ -7,15 +7,22 @@
 using std::string;
 
 //------------------------------------------------------------------------------------------
-// Card Class
+// Blackjack Class
 class Blackjack {
     private:
-        Player player1;
-        Dealer gameDealer;
+        int pot;
+        int playerScore;
+        int dealerScore;
         std::array<int, 3> scoreBoard;
     public:
+        Player player1;
+        Dealer gameDealer;
         Blackjack();
         std::array<int, 3> getScore();
+        void playGame();
+        void bet();
+        void playerTurn();
+        void calculateScore();
 };
 
 //------------------------------------------------------------------------------------------
