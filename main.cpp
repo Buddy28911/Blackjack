@@ -7,17 +7,17 @@
 #include <string>
 using std::string;
 
+int main()
+{
 
-int main() {
-    
     std::cout << "Welcome to Blackjack!" << std::endl;
 
     // Card ace_of_spade = Card();
     // std::cout << string(ace_of_spade) << std::endl;
-    
+
     // Card king_of_hearts = Card("Heart", "King", 10);
     // std::cout << string(king_of_hearts) << std::endl;
-    
+
     // Deck deck1 = Deck();
 
     // // Test Code
@@ -35,7 +35,6 @@ int main() {
     // Dealer dealer = Dealer();
     // std::cout << string(dealer) << std::endl;
 
-
     // std::vector<int> myvector;
     // for (int i=1; i<=5; i++) myvector.push_back(i);
 
@@ -52,7 +51,7 @@ int main() {
     myCardVec.push_back(Card("Clubs", "2", 2));
 
     std::cout << "myvector contains:";
-    for (std::vector<Card>::iterator it = myCardVec.begin() ; it != myCardVec.end(); ++it)
+    for (std::vector<Card>::iterator it = myCardVec.begin(); it != myCardVec.end(); ++it)
         std::cout << ' ' << string(*it);
     std::cout << '\n';
 
@@ -61,11 +60,10 @@ int main() {
     player1.updateHand(Card("Hearts", "4", 4));
     std::cout << string(player1) << std::endl;
 
-
     std::cout << "about to create object" << std::endl;
     Blackjack bjGame = Blackjack();
-    std::array<int,3> sb = bjGame.getScore();
-    std::cout << std::to_string(sb[0]) << " " << std::to_string(sb[1]) << + " " << std::to_string(sb[2]) << std::endl;
+    std::array<int, 3> sb = bjGame.getScore();
+    std::cout << std::to_string(sb[0]) << " " << std::to_string(sb[1]) << +" " << std::to_string(sb[2]) << std::endl;
 
     // bjGame.player1.updateHand(bjGame.gameDealer.dealCard());
     // std::cout << string(bjGame.player1) << std::endl;
