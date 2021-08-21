@@ -9,6 +9,7 @@
                 "${file}",
                 "${fileDirname}/deck.cpp",
                 "${fileDirname}/players.cpp",
+                "${fileDirname}/blackjack.cpp",
                 "-o",
                 "${fileDirname}/blackjack"
             ],

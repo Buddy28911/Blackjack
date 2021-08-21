@@ -1,6 +1,7 @@
 // By Danny Noe
 #include <iostream>
 #include "deck.h"
+#include "blackjack.h"
 #include "players.h"
 #include <vector>
 
@@ -56,6 +57,10 @@ int main() {
     std::cout << string(player1) << std::endl;
     player1.updateHand(Card("Hearts", "4", 4));
     std::cout << string(player1) << std::endl;
+
+    Blackjack bjGame = Blackjack();
+    std::array<int,3> sb = bjGame.getScore();
+    std::cout << std::to_string(sb[0]) << " " << std::to_string(sb[1]) << + " " << std::to_string(sb[2]) << std::endl;
 
     return 0;
 }
