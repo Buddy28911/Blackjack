@@ -56,37 +56,109 @@ void Blackjack::calculateScore() {
 
     // Player score
     playerScore = 0;
-    bool hasAce = false;
+    int hasAce = 0;
     for (std::vector<Card>::iterator it = player1.playerHand.begin(); it != player1.playerHand.end(); it++) {
         playerScore += it->getVal();
         if (it->getVal() == 11) {
-            hasAce = true;
+            hasAce++;
         }
     }
 
     if (playerScore > 21 && hasAce) {
-        playerScore -= 10;
+        playerScore = playerScore - (hasAce * 10);
     }
 
     // Dealer score
     dealerScore = 0;
-    hasAce = false;
+    hasAce = 0;
 
     for (std::vector<Card>::iterator it = gameDealer.dealerHand.begin(); it != gameDealer.dealerHand.end(); it++) {
         dealerScore += it->getVal();
         if (it->getVal() == 11) {
-            hasAce = true;
+            hasAce++;
         }
     }
 
     if (dealerScore > 21 && hasAce) {
-        dealerScore -= 10;
+        dealerScore = dealerScore - (hasAce * 10);
     }
 
     return;
 }
 
 void Blackjack::playerTurn() {
+    
+    while (playerScore < 21) {
+        string input;
+        std::cout << "Hit or Stay? (case sensitive)" << std::endl;
+        std::cin >> input;
+
+        while (input != "Hit" && input != "Stay") {
+            std::cout << "Please enter 'Hit' or 'Stay' (case sensitive)" << std::endl;
+            std::cin >> input;
+        }
+
+        if (input == "Stay") {
+            break;
+        }
+        else {
+            player1.updateHand(gameDealer.dealCard());
+            calculateScore();
+            std::cout << string(player1) << " Score: " << playerScore << std::endl;
+        }
+    }
+    return;
+}
+
+void Blackjack::dealerTurn() {
+
+    while (dealerScore < 17) {
+        std::cout << "Dealer hits" << std::endl;
+        gameDealer.updateHand(gameDealer.dealCard());
+        calculateScore();
+        std::cout << string(gameDealer) << " Score: " << dealerScore << std::endl;
+    }
+}
+
+void Blackjack::finishRound() {
+
+    if (playerScore == 21) {
+        if (playerScore == dealerScore) {
+            // tie
+            player1.updateChips(pot);
+            scoreBoard[2] += 1;
+            std::cout << "Tie! :|" << std::endl;
+        }
+        else {
+            // win
+            player1.updateChips(pot*2);
+            scoreBoard[0] += 1;
+            std::cout << "Win! :)" << std::endl;
+        }
+    }
+    else if (playerScore > 21) {
+        // loss
+        scoreBoard[1] += 1;
+        std::cout << "Loss! :'c" << std::endl;
+    }
+    else if (playerScore > dealerScore) {
+        // win
+        player1.updateChips(pot*2);
+        scoreBoard[0] += 1;
+        std::cout << "Win! :)" << std::endl;
+    }
+    else if (playerScore == dealerScore) {
+        // tie
+        player1.updateChips(pot);
+        scoreBoard[2] += 1;
+        std::cout << "Tie! :|" << std::endl;
+    }
+    else {
+        // loss
+        scoreBoard[1] += 1;
+        std::cout << "Loss! :'c" << std::endl;
+    }
+
     return;
 }
 
@@ -111,10 +183,13 @@ void Blackjack::playGame() {
     std::cout << string(player1) << " Score: " << playerScore << std::endl;
 
     // Player turn
+    playerTurn();
 
     // Dealer turn
+    dealerTurn();
 
     // Deal pot / update scoreboard 
+    finishRound();
 
     return;
 }

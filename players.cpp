@@ -34,6 +34,7 @@ void Dealer::updateHand(Card new_card){
 Player::Player() {
     chips = 100; // Player starts with $100 in chips
     // playerHand.push_back(Card());
+    // playerHand.push_back(Card("Diamonds", "11", 11));
     // playerHand.push_back(Card("Hearts", "Jack", 10));
 }
 

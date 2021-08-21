@@ -13,7 +13,7 @@ class Blackjack {
         int pot;
         int playerScore;
         int dealerScore;
-        std::array<int, 3> scoreBoard;
+        std::array<int, 3> scoreBoard; // [Win, Loss, Tie]
     public:
         Player player1;
         Dealer gameDealer;
@@ -22,6 +22,8 @@ class Blackjack {
         void playGame();
         void bet();
         void playerTurn();
+        void dealerTurn();
+        void finishRound();
         void calculateScore();
 };
 
