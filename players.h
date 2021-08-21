@@ -17,6 +17,7 @@ class Dealer {
         Dealer();
         Card dealCard();
         void updateHand(Card new_card);
+        void shuffle();
         operator string() const;
 };
 //------------------------------------------------------------------------------------------

@@ -20,6 +20,8 @@ class Blackjack {
         Blackjack();
         std::array<int, 3> getScore();
         void playGame();
+        void round();
+        void reset();
         void bet();
         void playerTurn();
         void dealerTurn();

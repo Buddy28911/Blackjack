@@ -29,7 +29,7 @@ std::array<int, 3> Blackjack::getScore(){
 
 void Blackjack::bet() {
     
-
+    std::cout << "You have " << player1.getChips() << " chips." << std::endl;
     std::cout << "Enter bet amount. Minimum 1 " << std::endl;
     int betAmount;
     std::cin >> betAmount;
@@ -162,8 +162,7 @@ void Blackjack::finishRound() {
     return;
 }
 
-void Blackjack::playGame() {
-
+void Blackjack::round() {
     // Bet
     bet();
 
@@ -190,7 +189,31 @@ void Blackjack::playGame() {
 
     // Deal pot / update scoreboard 
     finishRound();
+}
 
+void Blackjack::reset(){
+    
+    gameDealer.shuffle(); // Shuffle the deck
+
+    while (!player1.playerHand.empty()){
+        player1.playerHand.pop_back();
+    }
+
+    while (!gameDealer.dealerHand.empty()){
+        gameDealer.dealerHand.pop_back();
+    }
+}
+
+void Blackjack::playGame() {
+
+    round();
+    std::cout << "Win: " << scoreBoard[0] << " Loss: " << scoreBoard[1] << " Tie: " << scoreBoard[2] << std::endl;
+
+    while (player1.getChips() > 0) {
+        reset();
+        round();
+        std::cout << "Win: " << scoreBoard[0] << " Loss: " << scoreBoard[1] << " Tie: " << scoreBoard[2] << std::endl;
+    }
     return;
 }
 
