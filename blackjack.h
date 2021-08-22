@@ -1,3 +1,11 @@
+/**
+ * Blackjack in C++
+ * blackjack.h
+ * Author: Danny Noe
+ * Description: blackjack.h contains the blackjack class. 
+ *  The Blackjack class encapsulates the data and functions required to play Blackjack.
+ */
+
 #ifndef __BLACKJACK_H__
 #define __BLACKJACK_H__
 
@@ -7,7 +15,10 @@
 using std::string;
 
 //------------------------------------------------------------------------------------------
-// Blackjack Class
+/**
+ * Blackjack Class
+ * The Blackjack class encapsulates the data and functions required to play Blackjack.
+ */
 class Blackjack
 {
 private:
@@ -15,12 +26,7 @@ private:
     int playerScore;
     int dealerScore;
     std::array<int, 3> scoreBoard; // [Win, Loss, Tie]
-public:
-    Player player1;
-    Dealer gameDealer;
-    Blackjack();
-    std::array<int, 3> getScore();
-    void playGame();
+
     void round();
     void reset();
     void bet();
@@ -28,6 +34,13 @@ public:
     void dealerTurn();
     void finishRound();
     void calculateScore();
+
+public:
+    Player player1;
+    Dealer gameDealer;
+    Blackjack();
+    std::array<int, 3> getScore();
+    void playGame();
 };
 
 //------------------------------------------------------------------------------------------

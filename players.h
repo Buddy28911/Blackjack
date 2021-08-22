@@ -1,3 +1,12 @@
+/**
+ * Blackjack in C++
+ * players.h
+ * Author: Danny Noe
+ * Description: players.h contains two classes.
+ *      Dealer class: represents the dealer in blackjack
+ *      Player class: represents a player in blackjack
+ */
+
 #ifndef __PLAYERS_H__
 #define __PLAYERS_H__
 
@@ -8,7 +17,10 @@
 using std::string;
 
 //------------------------------------------------------------------------------------------
-// Dealer Class
+/**
+ * Dealer Class
+ *  Dealer class represents the dealer in blackjack
+ */
 class Dealer
 {
 private:
@@ -25,7 +37,10 @@ public:
 //------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------
-// Player Class
+/**
+ * Player Class
+ *  the class represents a player in blackjack
+ */
 class Player
 {
 private:

@@ -1,3 +1,12 @@
+/**
+ * Blackjack in C++
+ * deck.cpp
+ * Author: Danny Noe
+ * Description: deck.cpp implements the Card and Deck classes
+ *      Card class: represents a playing card
+ *      Deck class: represents a standard deck of 52 playing cards
+ */
+
 #include "deck.h"
 #include <string>
 #include <array>
@@ -9,63 +18,88 @@
 using std::string;
 
 //------------------------------------------------------------------------------------------
-// Card Class
-// The card class represents a playing card. Each instance of the class represents a playing card with a suit, face, and value
+/**
+ * Card Class
+ *  The card class represents a playing card. Each instance of the class represents a playing
+ *  card with a suit, face, and value
+ */
+
+/**
+ * Default card class constructor. Creates an Ace of Spades
+ */
 Card::Card()
 {
-    // Initializes a Card class object with the default constructor.
-    // The default attributes is the ace of spades
     suit = "Spades";
     face = "Ace";
     val = 11;
 }
 
+/**
+ * Card constructor creates a card object given the function's arguments
+ * @param[in] _suit, string describing the card's suit
+ * @param[in] _face, string describing the card's face value (i.e., "1", "Jack")
+ * @param[in] _val,  int representing the card's numeric value in Blackjack
+ */
 Card::Card(string _suit, string _face, int _val)
 {
-    // Constructs an instance of the Card class using the given args
     suit = _suit;
     face = _face;
     val = _val;
 }
 
+/**
+ * Returns the suit of the card as a std::string
+ * @param[out] suit, returns the string denoting the card's suit
+ */
 string Card::getSuit()
 {
-    // Returns the suit of the card as a std::string
     return suit;
 }
 
+/**
+ * Returns the face of the card as a std::string
+ * @param[out] face, returns the string denoting the card's face
+ */
 string Card::getFace()
 {
-    // Returns the face of the card as a std::string
     return face;
 }
 
+/**
+ * Returns the val of the card as an int
+ * @param[out] face, returns the val of the card as an int
+ */
 int Card::getVal()
 {
-    // Returns the val of the card as an int
     return val;
 }
 
+/**
+ * Override the string() operator to return the data encapsulated in the Card class as a std::string
+ * @param[out] str, returns string representation of the Card
+ */
 Card::operator string() const
 {
-    // Override the string() operator to return the data encapsulated in the Card class as a std::string
     return face + " of " + suit + ".";
 }
 
 //------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------
-// Deck Class
-// Deck class is an object that represents a deck of cards. The deck contains an array, the52Cards,
-// which holds 52 card objects. The Deck class also has a vector, shuffledVec, that contains the
-// indices for each card.
+/**
+ * Deck Class
+ *  Deck class is an object that represents a deck of cards. The deck contains an array, the52Cards,
+ *  which holds 52 card objects. The Deck class also has a vector, shuffledVec, that contains the
+ *  indices for each card.
+ */
 
+/**
+ * Helper function for the Deck() constructor. Populates the the52Cards array with
+ * all 52 Card objects. Each object is one of the 52 cards in a standard deck
+ * @relatesalso Deck
+ */
 void Deck::buildDeck()
 {
-    // Helper function for the Deck() constructor
-    // Creates 52 card objects, representing the complete deck, and adds each card to
-    // the the52Cards array
-
     int cardCounter = 0; // keeps track of the current array index
 
     for (int i = 0; i < 4; i++)
@@ -119,11 +153,13 @@ void Deck::buildDeck()
     return;
 }
 
+/**
+ * shuffle() function refills and shuffles the deck
+ * Specifically this function adds 52 ints [0-51] to the shuffledVec
+ * then shuffles the vector. The ints in the vector represent the indices of the 52 cards
+ */
 void Deck::shuffle()
 {
-    // Shuffles the deck. Specifically this function adds 52 ints [0-51] to the shuffledVec
-    // then shuffles the vector. The ints in the vector represent the indices of the 52 cards
-
     // Purge old indices on re-shuffle
     while (!shuffledVec.empty())
     {
@@ -145,6 +181,10 @@ void Deck::shuffle()
     return;
 }
 
+/**
+ * Creates an instance of the Deck class. The deck is populated with the standard 52 cards
+ * in a playing deck.
+ */
 Deck::Deck()
 {
     // Deck constructor function. Creates a full 52 card Deck object
@@ -164,12 +204,17 @@ Deck::Deck()
     return;
 }
 
+/**
+ * Returns the card on the top of the deck
+ * @param[out] next_card, the card object at the top of the deck
+ */
 Card Deck::dealCard()
 {
-    // Returns the card on the top of the deck
+    //
 
     Card next_card = the52Cards[shuffledVec.back()];
     shuffledVec.pop_back();
     return next_card;
 }
+
 //------------------------------------------------------------------------------------------
