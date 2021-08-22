@@ -181,8 +181,9 @@ void Blackjack::dealerTurn()
         std::cout << "Dealer hits" << std::endl;
         gameDealer.updateHand(gameDealer.dealCard());
         calculateScore();
-        std::cout << string(gameDealer) << " Score: " << dealerScore << std::endl;
     }
+    std::cout << string(gameDealer) << " Score: " << dealerScore << std::endl;
+    return;
 }
 
 /**

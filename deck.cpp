@@ -187,16 +187,8 @@ void Deck::shuffle()
  */
 Deck::Deck()
 {
-    // Deck constructor function. Creates a full 52 card Deck object
-
     // Build the deck
-    buildDeck(); // Helper function populates the deck array with the standard 52 cards
-
-    // Testing code
-    for (int i = 0; i < 52; i++)
-    {
-        std::cout << string(the52Cards[i]) << std::endl;
-    }
+    buildDeck();
 
     // Shuffle the deck
     shuffle();
@@ -210,8 +202,6 @@ Deck::Deck()
  */
 Card Deck::dealCard()
 {
-    //
-
     Card next_card = the52Cards[shuffledVec.back()];
     shuffledVec.pop_back();
     return next_card;
