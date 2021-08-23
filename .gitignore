@@ -1,0 +1,6 @@
+.vscode/
+blackjack.dSYM/
+main.dSYM/
+blackjack
+instructions.md
+test.cpp
