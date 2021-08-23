@@ -9,6 +9,13 @@ Play Blackjack in the console, powered by C++.
 
 # Compile
 To compile the Blackjack use
+```
+./build.sh
+```
+
+<br>
+
+Alternatively, you can build the executable with this command:
 ``` 
 g++ main.cpp deck.cpp players.cpp blackjack.cpp -g -o blackjack 
 ```
